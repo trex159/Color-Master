@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Master - RGB Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Color Master</h1>
+            <p class="subtitle">Test your color intuition!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="target-section">
+                <h2>Target Color</h2>
+                <div id="colorBox" class="color-box"></div>
+            </div>
+
+            <div class="input-section">
+                <div class="controls">
+                    <select id="difficulty" class="difficulty-select">
+                        <option value="easy">Beginner</option>
+                        <option value="medium" selected>Advanced</option>
+                        <option value="hard">Expert</option>
+                    </select>
+                    <div class="streak-counter">
+                        Streak: <span id="streakCount">0</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="color-input-wrapper">
+                        <input type="text" 
+                               id="hexInput" 
+                               placeholder="Enter HEX color (e.g., #FF5733)" 
+                               maxlength="7"
+                               pattern="^#[0-9A-Fa-f]{6}$"
+                               autocomplete="off"
+                               spellcheck="false">
+                        <div id="colorPreview" class="color-preview"></div>
+                    </div>
+                    <button onclick="checkColor()" class="check-button" id="checkButton">
+                        Check Color
+                    </button>
+                </div>
+
+                <p id="result" class="result"></p>
+                
+                <button onclick="startGame()" class="next-button" id="nextButton" style="display: none;">
+                    Next Color
+                </button>
+            </div>
+
+            <div class="comparison-section">
+                <div class="color-card">
+                    <h3>Your Guess</h3>
+                    <div id="guessedBox" class="color-display"></div>
+                    <div class="color-info">
+                        <p id="guessedHex" class="hex-value"></p>
+                        <p id="guessedAnalysis" class="color-analysis"></p>
+                    </div>
+                </div>
+
+                <div class="color-map-container">
+                    <div class="color-map">
+                        <div class="color-map-grid"></div>
+                        <div id="colorPoints"></div>
+                    </div>
+                    <div class="color-map-legend">
+                        <span class="legend-item">
+                            <span class="dot target"></span>
+                            Target
+                        </span>
+                        <span class="legend-item">
+                            <span class="dot guess"></span>
+                            Guess
+                        </span>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <h3>Target Color</h3>
+                    <div id="actualBox" class="color-display"></div>
+                    <div class="color-info">
+                        <p id="actualHex" class="hex-value"></p>
+                        <p id="actualAnalysis" class="color-analysis"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="highscores">
+                <h2>Top Scores</h2>
+                <ul id="highscores"></ul>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Average Score</span>
+                    <span class="stat-value" id="averageScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Best Streak</span>
+                    <span class="stat-value" id="bestStreak">0</span>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="toggleTheme()" class="theme-toggle">
+            Toggle Theme
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
